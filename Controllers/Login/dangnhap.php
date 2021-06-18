@@ -27,7 +27,7 @@ switch ($action) {
 			}
 			else
 			{
-				$thatbai = "Đăng ký Thất bại do mặt khẩu nhập lại không khớt.!";
+				$thatbai = "<p style ='color:red'>* Đăng ký Thất bại do mặt khẩu nhập lại không khớt.!</p>";
 			}
 		}
 		require_once 'View/register.php';
@@ -86,6 +86,7 @@ switch ($action) {
 				}
 				else
 				{
+					$thatbai = "<p style ='color:red'>* Tên đăng nhập hoặc Mật khẩu không đúng.!</p>";
 					require_once 'View/login.php';
 				}
 			}

@@ -22,6 +22,9 @@
       <div class="card-body">
         <form action="index.php?controllers=login&action=Admin" method="POST">
           <div class="form-group">
+            <?php if (isset(($thatbai))) {
+              echo($thatbai);
+            } ?>
             <div class="form-label-group">
               <input type="text" name="username" id="inputtext" class="form-control" placeholder="Username" required="required" autofocus="autofocus">
               <label for="inputEmail">Username</label>

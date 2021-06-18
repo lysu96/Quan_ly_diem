@@ -8,7 +8,7 @@ class Database_ql_diem
 	private static $database ="quan_ly_diem";
 	protected static $conn = NULL;
 	
-	public function Connect()
+	public static function Connect()
 		{
 			self::$conn = mysqli_connect(self::$hostname,self::$username,self::$password,self::$database);
 

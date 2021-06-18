@@ -24,12 +24,12 @@
   <div class="container">
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">Đăng ký</div>
-      <?php if (isset($thatbai)) {
-        echo "<span style='color:red;'>".$thatbai."</span>";
-      } ?>
       <div class="card-body">
         <form action="#" method="POST">
           <div class="form-group">
+            <?php if (isset($thatbai)) {
+              echo $thatbai;
+            } ?>
             <div class="form-row">
               <div class="col-md-6">
                 <div class="form-label-group">
