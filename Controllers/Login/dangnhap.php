@@ -21,7 +21,7 @@ switch ($action) {
 			$txtHote = $txtfirstName." ".$txtlastName;
 
 			if ($txtPassword == $txtCfPassword) {
-				if (Dangnhap::ADD($txtHote,$txtUsername,$txtPassword,$txtEmail)) {
+				if (Dangnhap::ADD($txtHote,$txtUsername,md5($txtPassword),$txtEmail)) {
 					header('location:index.php?controllers=login');
 				}
 			}
@@ -77,10 +77,10 @@ switch ($action) {
 		// print_r($list_user);
 		if (isset($_POST['login'])) {
 			$text_username = $_POST['username'];
-			$text_password = $_POST['password'];
+			$text_password = md5($_POST['password']);
 
 			foreach ($list_user as $value) {
-				if ($text_username == $value['username']&&$text_password == $value['password']) {
+				if ($text_username == $value['username'] && $text_password == $value['password']) {
 					$_SESSION["username"] = $text_username;
 					header('location:index.php?controllers=quanly&action=Admin');
 				}
