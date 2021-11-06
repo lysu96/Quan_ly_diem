@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 23, 2020 lúc 07:31 PM
+-- Thời gian đã tạo: Th10 06, 2021 lúc 05:19 AM
 -- Phiên bản máy phục vụ: 10.1.36-MariaDB
 -- Phiên bản PHP: 7.2.11
 
@@ -40,7 +40,9 @@ CREATE TABLE `dangnhap` (
 --
 
 INSERT INTO `dangnhap` (`hoten`, `username`, `password`, `emai`) VALUES
-('Nguyễn Văn H', 'H', '12345', 'H123@gmail.com');
+('Nguyễn Văn H', 'H', '827ccb0eea8a706c4c34a16891f84e7b', 'H123@gmail.com'),
+('Nguyễn thị L', 'L', '827ccb0eea8a706c4c34a16891f84e7b', 'L12345@gmail.com'),
+('Hà Thị Y', 'Y', '827ccb0eea8a706c4c34a16891f84e7b', 'Y@gmail.com');
 
 -- --------------------------------------------------------
 

@@ -55,7 +55,7 @@
         <div class="modal-body">Bạn có chắc chắn muốn đăng xuất tài khoản không?</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
-          <a class="btn btn-primary" href="index.php">Đăng xuất</a>
+          <a class="btn btn-primary" href="index.php?controllers=login&action=logout">Đăng xuất</a>
         </div>
       </div>
     </div>

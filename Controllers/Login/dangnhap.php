@@ -15,13 +15,13 @@ switch ($action) {
 			$txtlastName = $_POST['txtlastName'];
 			$txtUsername = $_POST['txtUsername'];
 			$txtEmail = $_POST['txtEmail'];
-			$txtPassword = $_POST['txtPassword'];
-			$txtCfPassword = $_POST['txtCfPassword'];
+			$txtPassword = md5($_POST['txtPassword']);
+			$txtCfPassword = md5($_POST['txtCfPassword']);
 
 			$txtHote = $txtfirstName." ".$txtlastName;
 
 			if ($txtPassword == $txtCfPassword) {
-				if (Dangnhap::ADD($txtHote,$txtUsername,md5($txtPassword),$txtEmail)) {
+				if (Dangnhap::ADD($txtHote,$txtUsername,$txtPassword,$txtEmail)) {
 					header('location:index.php?controllers=login');
 				}
 			}
@@ -41,7 +41,7 @@ switch ($action) {
 				$txtfirstName = $_POST['txtfirstName'];
 				$txtUsername = $_POST['txtUsername'];
 				$txtEmail = $_POST['txtEmail'];
-				$txtPassword = $_POST['txtPassword'];
+				$txtPassword = md5($_POST['txtPassword']);
 
 				if (Dangnhap::Edit($txtfirstName,$txtUsername,$txtPassword,$txtEmail,$username)) {
 					$_SESSION['username'] = $txtUsername;
@@ -72,29 +72,39 @@ switch ($action) {
 		require_once 'View/forgot-password.php';
 		break;
 	case 'Admin':
-		$list_user = Dangnhap::List();
-		// echo "<pre>";
-		// print_r($list_user);
+		
 		if (isset($_POST['login'])) {
 			$text_username = $_POST['username'];
 			$text_password = md5($_POST['password']);
 
-			foreach ($list_user as $value) {
-				if ($text_username == $value['username'] && $text_password == $value['password']) {
+			$list_user = Dangnhap::Login($text_username, $text_password);
+			// echo "<pre>";
+			// print_r($list_user);
+
+			// foreach ($list_user as $value) {
+				if ($list_user > 0) {
 					$_SESSION["username"] = $text_username;
 					header('location:index.php?controllers=quanly&action=Admin');
 				}
 				else
 				{
 					$thatbai = "<p style ='color:red'>* Tên đăng nhập hoặc Mật khẩu không đúng.!</p>";
+					//header('location:index.php');
 					require_once 'View/login.php';
 				}
-			}
+			//}
 		}
 		//require_once 'View/login.php';
 		break;
+	case 'logout':
+		require_once 'View/logout.php';
+		break;
 	default:
-		require_once 'View/login.php';
+		if (isset($_SESSION["username"])) {
+			header('location:index.php?controllers=quanly&action=Admin');
+		} else{
+			require_once 'View/login.php';
+		}
 		break;
 }
 

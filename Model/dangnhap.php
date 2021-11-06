@@ -3,6 +3,11 @@
 require_once 'Connect/connect.php';
 class Dangnhap extends Database_ql_diem
 {
+	public static function Login($text_username, $text_password)
+	{
+		$sql = "SELECT * FROM dangnhap WHERE dangnhap.username = '$text_username' AND dangnhap.password = '$text_password'";
+		return parent::Getdata($sql);
+	}
 	public static function ADD($text_hoten,$text_username,$text_password,$text_email)
 	{
 		$sql = "INSERT INTO dangnhap(hoten, username, password, emai) VALUES ('$text_hoten','$text_username','$text_password','$text_email')";
